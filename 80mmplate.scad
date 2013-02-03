@@ -3,9 +3,12 @@
 // really not positive on these dimensions, docs don't seem to provide details
 
 $fn=50;
+
 // holes
 large=7.1;
 small=5.2;
+
+//plate
 width=140;
 length=160;
 radius=10;
@@ -23,65 +26,26 @@ module 80mmplate() {
 			cylinder(r=radius, h=thickness/2,center=true);
 		}
 		// the holes
-		hole(small);
-		translate([10,0,0])hole(small);
-		translate([-10,0,0])hole(small);
-		translate([0,10,0])hole(small);
-		translate([0,-10,0])hole(small);
-		translate([0,30,0])hole(small);
-		translate([0,-30,0])hole(small);
-		translate([0,60,0])hole(small);
-		translate([0,-60,0])hole(small);
-		translate([10,40,0])hole(small);
-		translate([-10,40,0])hole(small);
-		translate([10,60,0])hole(small);
-		translate([-10,60,0])hole(small);
-		translate([10,-40,0])hole(small);
-		translate([-10,-40,0])hole(small);
-		translate([10,-60,0])hole(small);
-		translate([-10,-60,0])hole(small);
-		translate([30,40,0])hole(small);
-		translate([-30,40,0])hole(small);
-		translate([30,-40,0])hole(small);
-		translate([-30,-40,0])hole(small);
-		translate([22.5,60,0])hole(small);
-		translate([-22.5,60,0])hole(large);
-		translate([22.5,-60,0])hole(small);
-		translate([-22.5,-60,0])hole(large);
-		translate([32.5,60,0])hole(small);
-		translate([-32.5,60,0])hole(large);
-		translate([32.5,-60,0])hole(small);
-		translate([-32.5,-60,0])hole(large);
-		translate([42.5,60,0])hole(small);
-		translate([-42.5,60,0])hole(large);
-		translate([42.5,-60,0])hole(small);
-		translate([-42.5,-60,0])hole(large);
-		translate([52.5,60,0])hole(small);
-		translate([-52.5,60,0])hole(large);
-		translate([52.5,-60,0])hole(small);
-		translate([-52.5,-60,0])hole(large);
-		translate([40,30,0])hole(small);
-		translate([-40,30,0])hole(small);
-		translate([40,-30,0])hole(small);
-		translate([-40,-30,0])hole(small);
-		translate([52.5,0,0])hole(small);
-		translate([-52.5,0,0])hole(large);
-		translate([52.5,0,0])hole(small);
-		translate([-52.5,0,0])hole(large);
-		translate([52.5,35,0])hole(small);
-		translate([-52.5,35,0])hole(large);
-		translate([52.5,-35,0])hole(small);
-		translate([-52.5,-35,0])hole(large);
-		translate([55,10,0])hole(small);
-		translate([55,-10,0])hole(small);
-		translate([-55,10,0])hole(small);
-		translate([-55,-10,0])hole(small);
-		translate([40,10,0])hole(small);
-		translate([40,-10,0])hole(small);
-		translate([-40,10,0])hole(small);
-		translate([-40,-10,0])hole(small);
-		translate([30,0,0])hole(small);
-		translate([-30,0,0])hole(small);
+		for(i = [	[0,0,0],			[10,0,0],		[-10,0,0],		[0,10,0],		[0,-10,0],		[0,30,0],		[0,-30,0],	
+						[0,60,0],		[0,-60,0],		[10,40,0],		[-10,40,0],	[10,60,0],		[-10,60,0],	[10,-40,0],	
+						[-10,-40,0],	[10,-60,0],	[-10,-60,0],	[30,40,0],		[-30,40,0],	[30,-40,0],	[-30,-40,0],
+						[22.5,60,0],	[22.5,-60,0],	[32.5,60,0],	[32.5,-60,0],	[42.5,60,0],	[42.5,-60,0],	[52.5,60,0],
+						[52.5,-60,0],	[40,30,0],		[-40,30,0],	[40,-30,0],	[-40,-30,0],	[52.5,0,0],	[52.5,0,0],
+						[52.5,35,0],	[52.5,-35,0],	[55,10,0],		[55,-10,0],	[-55,10,0],	[-55,-10,0],	[40,10,0],
+						[40,-10,0],	[-40,10,0],	[-40,-10,0],	[30,0,0],		[-30,0,0] ])	
+		{
+			translate(i)hole(small);
+		}
+
+
+		for(i = [	[-52.5,-35,0],	[-52.5,35,0],		[-52.5,0,0],		[-52.5,0,0],	[-52.5,-60,0],	[-52.5,60,0],
+						[-42.5,-60,0],	[-42.5,60,0],		[-32.5,-60,0],	[-32.5,60,0],	[-22.5,-60,0],	[-22.5,60,0] ])
+		{
+			translate(i)hole(large);
+		}
+
+
+
 	}
 }
 

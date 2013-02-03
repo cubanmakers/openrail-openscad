@@ -2,9 +2,12 @@
 // drawn by jdausilio/zeke7237
 
 $fn=50;
+
 // holes
 large=7.1;
 small=5.2;
+
+//plate
 width=80;
 length=80;
 radius=10;
@@ -22,19 +25,17 @@ module 20mmplate() {
 			cylinder(r=radius, h=thickness/2,center=true);
 		}
 		// the holes
-		hole(small);
-		translate([10,0,0])hole(small);
-		translate([-10,0,0])hole(small);
-		translate([0,10,0])hole(small);
-		translate([0,-10,0])hole(small);
-		translate([22.5,0,0])hole(small);
-		translate([-22.5,0,0])hole(large);
-		translate([0,-22.5,0])hole(small);
-		translate([0,+22.5,0])hole(small);
-		translate([22.5,+22.5,0])hole(small);
-		translate([-22.5,+22.5,0])hole(large);
-		translate([22.5,-22.5,0])hole(small);
-		translate([-22.5,-22.5,0])hole(large);
+		for(i = [	[0,0,0],				[10,0,0],			[-10,0,0],			[0,10,0],			[0,-10,0],
+						[22.5,0,0],		[-22.5,0,0],		[0,-22.5,0],		[0,+22.5,0],		[22.5,+22.5,0],
+						[22.5,-22.5,0] ])
+		{
+			translate(i)hole(small);
+		}
+		for(i = [	[-22.5,+22.5,0],
+						[-22.5,-22.5,0] ])
+		{
+			translate(i)hole(large);
+		}
 	}
 }
 

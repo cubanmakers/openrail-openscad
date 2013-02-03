@@ -2,9 +2,9 @@
 // drawn by jdausilio/zeke7237
 // I had to do this one from measurements, and assume that the wheel profile is the same as the rail
 
-$fn=100;
+$fn=50;
 
-side=3.42;
+side=3.42;		// from wheel drawing
 width=20;		// width not including point
 overhang=0.8;	// rectangle below point
 thickness=2.4;	// thickness of skinny part
@@ -26,11 +26,17 @@ module rail(length) {
 			rotate([0,0,45])cube([side,side,length],center=true);
 			translate([width/2,0,0])cube([width,hypotenuse,length],center=true);
 		}
-		translate([(width-overhang)/2+overhang+0.1,-thickness/2-0.1,0])cube([width-overhang+0.2,hypotenuse-thickness+0.2,length+0.1],center=true);
+		translate([(width-overhang)/2+overhang+0.1,-thickness/2-0.1,0])
+			cube([width-overhang+0.2,hypotenuse-thickness+0.2,length+0.1],center=true);
 		for(i=[-floor(length/(2*hole_spacing)):1:floor(length/(2*hole_spacing))]) {
 			translate([width/2,thickness/2+0,i*50])rotate([0,90,90])oval_hole();
 		}
 	}
 }
 
+module double_rail(length) {
+	rail(length);
+	translate([20,0,0])rotate([0,0,180])rail(length);
+}
 
+double_rail(150);

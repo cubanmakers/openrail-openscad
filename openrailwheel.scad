@@ -2,7 +2,7 @@
 // drawn by jdausilio/zeke7237
 
 // from openbuilds drawings
-$fn=1000;
+$fn=100;
 min_radius=18.75/2;
 cone_major_radius=24.39/2;
 cone_minor_radius=9.77;
